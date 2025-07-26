@@ -1,0 +1,36 @@
+{
+  "name": "curl-mcp",
+  "version": "1.0.0",
+  "description": "An MCP server that exposes curl functionality to MCP clients",
+  "main": "build/index.js",
+  "type": "module",
+  "bin": {
+    "curl-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "start": "node build/index.js",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mcp",
+    "curl",
+    "http",
+    "client",
+    "model-context-protocol"
+  ],
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "build"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.16.5",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.16.0",
+    "zod": "^3.25.76"
+  }
+}
