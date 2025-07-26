@@ -11,7 +11,7 @@ const execAsync = promisify(exec);
 
 // Create server instance
 const server = new McpServer({
-  name: "curl-mcp",
+  name: "mcp-curl",
   version: "1.0.0",
   capabilities: {
     resources: {},

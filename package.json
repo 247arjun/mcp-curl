@@ -1,11 +1,11 @@
 {
-  "name": "curl-mcp",
+  "name": "mcp-curl",
   "version": "1.0.0",
   "description": "An MCP server that exposes curl functionality to MCP clients",
   "main": "build/index.js",
   "type": "module",
   "bin": {
-    "curl-mcp": "./build/index.js"
+    "mcp-curl": "./build/index.js"
   },
   "scripts": {
     "build": "tsc && chmod +x build/index.js",

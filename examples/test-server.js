@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Example script showing how to test the curl-mcp server locally
+ * Example script showing how to test the mcp-curl server locally
  * This script demonstrates the MCP protocol communication
  */
 
@@ -51,7 +51,7 @@ const messages = [
 ];
 
 function testServer() {
-  console.log('Testing curl-mcp server...\n');
+  console.log('Testing mcp-curl server...\n');
   
   const serverPath = join(__dirname, '..', 'build', 'index.js');
   const server = spawn('node', [serverPath], {

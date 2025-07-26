@@ -7,13 +7,13 @@ An MCP (Model Context Protocol) server that exposes curl functionality to MCP cl
 Install the package globally to use with npx:
 
 ```bash
-npm install -g curl-mcp
+npm install -g mcp-curl
 ```
 
 Or run directly with npx:
 
 ```bash
-npx curl-mcp
+npx mcp-curl
 ```
 
 ## Features
@@ -41,9 +41,9 @@ To use with Claude Desktop, add the following to your `claude_desktop_config.jso
 ```json
 {
   "mcpServers": {
-    "curl-mcp": {
+    "mcp-curl": {
       "command": "npx",
-      "args": ["curl-mcp"]
+      "args": ["mcp-curl"]
     }
   }
 }
@@ -53,7 +53,7 @@ To use with Claude Desktop, add the following to your `claude_desktop_config.jso
 
 For other MCP clients, configure them to run the server with:
 - Command: `npx`
-- Arguments: `["curl-mcp"]`
+- Arguments: `["mcp-curl"]`
 - Transport: stdio
 
 ## Tool Documentation
