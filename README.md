@@ -1,11 +1,7 @@
-# mcp-curl
+# MCP Server for Curl
 
 [![npm version](https://badge.fury.io/js/@247arjun%2Fmcp-curl.svg)](https://badge.fury.io/js/@247arjun%2Fmcp-curl)
 [![npm downloads](https://img.shields.io/npm/dm/@247arjun/mcp-curl.svg)](https://www.npmjs.com/package/@247arjun/mcp-curl)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
-[![GitHub issues](https://img.shields.io/github/issues/247arjun/mcp-curl.svg)](https://github.com/247arjun/mcp-curl/issues)
-[![GitHub stars](https://img.shields.io/github/stars/247arjun/mcp-curl.svg)](https://github.com/247arjun/mcp-curl/stargazers)
 
 A Model Context Protocol (MCP) server that provides curl functionality, allowing AI assistants to make HTTP requests directly from their environment.
 
@@ -20,33 +16,63 @@ A Model Context Protocol (MCP) server that provides curl functionality, allowing
 
 ## Installation
 
-### From GitHub
+### Method 1: NPM Installation (Recommended)
 
 ```bash
+# Install globally
+npm install -g @247arjun/mcp-curl
+
+# Or install locally in your project
+npm install @247arjun/mcp-curl
+```
+
+### Method 2: From Source
+
+```bash
+# Clone the repository
 git clone https://github.com/247arjun/mcp-curl.git
 cd mcp-curl
+
+# Install dependencies
 npm install
+
+# Build the project
 npm run build
+
+# Optional: Link globally
+npm link
 ```
 
-### From npm
+### Method 3: Direct from GitHub
 
 ```bash
-npm install -g @247arjun/mcp-curl
+# Install directly from GitHub
+npm install -g git+https://github.com/247arjun/mcp-curl.git
 ```
 
-Or use npx to run without installing:
+## Configuration
 
-```bash
-npx @247arjun/mcp-curl
+### Claude Desktop Setup
+
+Add to your Claude Desktop configuration file:
+
+**Location:**
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%/Claude/claude_desktop_config.json`
+
+**Configuration:**
+```json
+{
+  "mcpServers": {
+    "mcp-curl": {
+      "command": "mcp-curl",
+      "args": []
+    }
+  }
+}
 ```
 
-## Usage
-
-### As an MCP Server
-
-Add to your MCP client configuration:
-
+**Alternative: Using npx (no global install needed)**
 ```json
 {
   "mcpServers": {
@@ -58,40 +84,33 @@ Add to your MCP client configuration:
 }
 ```
 
-Or if installed globally:
+**Local Development Setup**
 ```json
 {
   "mcpServers": {
     "mcp-curl": {
       "command": "node",
-      "args": ["/path/to/mcp-curl/build/index.js"]
+      "args": ["/absolute/path/to/mcp-curl/build/index.js"]
     }
   }
 }
 ```
 
-### Claude Desktop Configuration
+After adding the configuration, restart Claude Desktop to load the MCP server.
 
-**macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-**Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
+## Available Tools
 
-```json
-{
-  "mcpServers": {
-    "mcp-curl": {
-      "command": "npx",
-      "args": ["@247arjun/mcp-curl"]
-    }
-  }
-}
-```
+### 1. `curl_get`
+Make HTTP GET requests.
 
-### Available Tools
+**Parameters:**
+- `url` (string): The URL to make the GET request to
+- `headers` (array, optional): HTTP headers in the format 'Header: Value'
+- `timeout` (number, optional): Request timeout in seconds
+- `follow_redirects` (boolean, optional): Whether to follow redirects
+- `user_agent` (string, optional): Custom User-Agent string
 
-The server provides the following tools:
-
-#### curl_get
-Make HTTP GET requests
+**Example:**
 ```json
 {
   "url": "https://api.example.com/data",
@@ -102,8 +121,19 @@ Make HTTP GET requests
 }
 ```
 
-#### curl_post
-Make HTTP POST requests with data
+### 2. `curl_post`
+Make HTTP POST requests with data.
+
+**Parameters:**
+- `url` (string): The URL to make the POST request to
+- `json_data` (object, optional): JSON object to send as POST data
+- `data` (string, optional): Data to send in the POST request body
+- `headers` (array, optional): HTTP headers
+- `content_type` (string, optional): Content-Type header
+- `timeout` (number, optional): Request timeout in seconds
+- `follow_redirects` (boolean, optional): Whether to follow redirects
+
+**Example:**
 ```json
 {
   "url": "https://api.example.com/data",
@@ -112,8 +142,19 @@ Make HTTP POST requests with data
 }
 ```
 
-#### curl_put
-Make HTTP PUT requests
+### 3. `curl_put`
+Make HTTP PUT requests.
+
+**Parameters:**
+- `url` (string): The URL to make the PUT request to
+- `json_data` (object, optional): JSON object to send as PUT data
+- `data` (string, optional): Data to send in the PUT request body
+- `headers` (array, optional): HTTP headers
+- `content_type` (string, optional): Content-Type header
+- `timeout` (number, optional): Request timeout in seconds
+- `follow_redirects` (boolean, optional): Whether to follow redirects
+
+**Example:**
 ```json
 {
   "url": "https://api.example.com/data/123",
@@ -122,8 +163,16 @@ Make HTTP PUT requests
 }
 ```
 
-#### curl_delete
-Make HTTP DELETE requests
+### 4. `curl_delete`
+Make HTTP DELETE requests.
+
+**Parameters:**
+- `url` (string): The URL to make the DELETE request to
+- `headers` (array, optional): HTTP headers
+- `timeout` (number, optional): Request timeout in seconds
+- `follow_redirects` (boolean, optional): Whether to follow redirects
+
+**Example:**
 ```json
 {
   "url": "https://api.example.com/data/123",
@@ -131,8 +180,17 @@ Make HTTP DELETE requests
 }
 ```
 
-#### curl_download
-Download files
+### 5. `curl_download`
+Download files.
+
+**Parameters:**
+- `url` (string): The URL of the file to download
+- `output_filename` (string, optional): Output filename
+- `resume` (boolean, optional): Resume partial download if file exists
+- `timeout` (number, optional): Request timeout in seconds
+- `follow_redirects` (boolean, optional): Whether to follow redirects
+
+**Example:**
 ```json
 {
   "url": "https://example.com/file.zip",
@@ -141,11 +199,48 @@ Download files
 }
 ```
 
-#### curl_advanced
-Execute curl with custom arguments
+### 6. `curl_advanced`
+Execute curl with custom arguments (advanced users).
+
+**Parameters:**
+- `args` (array): Array of curl arguments (excluding 'curl' itself)
+
+**Example:**
 ```json
 {
   "args": ["-X", "PATCH", "-H", "Content-Type: application/json", "-d", "{\"status\":\"updated\"}", "https://api.example.com/items/1"]
+}
+```
+
+## Usage Examples
+
+### Make a GET request
+```json
+{
+  "tool": "curl_get",
+  "url": "https://api.example.com/users",
+  "headers": ["Authorization: Bearer your-token"]
+}
+```
+
+### POST JSON data
+```json
+{
+  "tool": "curl_post",
+  "url": "https://api.example.com/users",
+  "json_data": {
+    "name": "John Doe",
+    "email": "john@example.com"
+  }
+}
+```
+
+### Download a file
+```json
+{
+  "tool": "curl_download",
+  "url": "https://example.com/file.zip",
+  "output_filename": "download.zip"
 }
 ```
 
@@ -208,36 +303,54 @@ mcp-curl/
 └── README.md             # This file
 ```
 
-## Security Considerations
+## Verification
+
+Test that the server is working:
+
+```bash
+# Test the built server
+node build/index.js
+
+# Should show: "Curl MCP Server running on stdio"
+# Press Ctrl+C to exit
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"Command not found" error**
+   - Ensure mcp-curl is installed globally: `npm install -g @247arjun/mcp-curl`
+   - Or use npx: `"command": "npx", "args": ["@247arjun/mcp-curl"]`
+
+2. **"Permission denied" error**
+   - Check file permissions: `chmod +x build/index.js`
+   - Rebuild the project: `npm run build`
+
+3. **MCP server not appearing in Claude**
+   - Verify JSON syntax in configuration file
+   - Restart Claude Desktop completely
+   - Check that the command path is correct
+
+4. **"curl command not found"**
+   - Install curl on your system (usually pre-installed on macOS/Linux)
+   - Windows users: Install via package manager or download from curl website
+
+### Debugging
+
+Enable verbose logging by setting environment variable:
+```bash
+# For development
+DEBUG=1 node build/index.js
+
+# Test with sample input
+echo '{"jsonrpc": "2.0", "method": "initialize", "params": {}}' | node build/index.js
+```
+
+## Security Notes
 
 - Input validation and sanitization for all curl arguments
 - Restricted file operations in advanced mode
 - Safe subprocess execution using spawn instead of shell
 - No arbitrary shell command execution
-
-## Requirements
-
-- Node.js 18.0.0 or higher
-- curl command-line tool installed on the system
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
-
-## Deployment
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions and configuration examples.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for version history and changes.
+- Input validation with Zod schemas
