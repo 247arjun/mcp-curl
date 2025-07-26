@@ -1,5 +1,12 @@
 # mcp-curl
 
+[![npm version](https://badge.fury.io/js/@247arjun%2Fmcp-curl.svg)](https://badge.fury.io/js/@247arjun%2Fmcp-curl)
+[![npm downloads](https://img.shields.io/npm/dm/@247arjun/mcp-curl.svg)](https://www.npmjs.com/package/@247arjun/mcp-curl)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
+[![GitHub issues](https://img.shields.io/github/issues/247arjun/mcp-curl.svg)](https://github.com/247arjun/mcp-curl/issues)
+[![GitHub stars](https://img.shields.io/github/stars/247arjun/mcp-curl.svg)](https://github.com/247arjun/mcp-curl/stargazers)
+
 A Model Context Protocol (MCP) server that provides curl functionality, allowing AI assistants to make HTTP requests directly from their environment.
 
 ## Features
