@@ -1,7 +1,7 @@
 {
   "name": "mcp-curl",
   "version": "1.0.0",
-  "description": "An MCP server that exposes curl functionality to MCP clients",
+  "description": "A Model Context Protocol (MCP) server that provides curl functionality for making HTTP requests",
   "main": "build/index.js",
   "type": "module",
   "bin": {
@@ -11,26 +11,62 @@
     "build": "tsc && chmod +x build/index.js",
     "start": "node build/index.js",
     "dev": "tsc --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "mcp",
+    "model-context-protocol",
     "curl",
     "http",
-    "client",
-    "model-context-protocol"
+    "api",
+    "requests",
+    "ai",
+    "assistant"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "247arjun",
+  "license": "MIT",
+  "homepage": "https://github.com/247arjun/mcp-curl#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/247arjun/mcp-curl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/247arjun/mcp-curl/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "files": [
-    "build"
+    "build/",
+    "README.md",
+    "LICENSE",
+    "DEPLOYMENT.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md"
   ],
   "devDependencies": {
+    "@types/jest": "^29.5.0",
     "@types/node": "^22.16.5",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.5.0",
     "typescript": "^5.8.3"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.16.0",
     "zod": "^3.25.76"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/test/**/*.test.js"],
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.d.ts"
+    ]
   }
 }

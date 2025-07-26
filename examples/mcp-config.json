@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mcp-curl": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-curl/build/index.js"],
+      "env": {}
+    }
+  }
+}
