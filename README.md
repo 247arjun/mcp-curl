@@ -22,10 +22,16 @@ npm install
 npm run build
 ```
 
-### From npm (when published)
+### From npm
 
 ```bash
-npm install -g mcp-curl
+npm install -g @247arjun/mcp-curl
+```
+
+Or use npx to run without installing:
+
+```bash
+npx @247arjun/mcp-curl
 ```
 
 ## Usage
@@ -34,6 +40,18 @@ npm install -g mcp-curl
 
 Add to your MCP client configuration:
 
+```json
+{
+  "mcpServers": {
+    "mcp-curl": {
+      "command": "npx",
+      "args": ["@247arjun/mcp-curl"]
+    }
+  }
+}
+```
+
+Or if installed globally:
 ```json
 {
   "mcpServers": {
@@ -54,8 +72,8 @@ Add to your MCP client configuration:
 {
   "mcpServers": {
     "mcp-curl": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-curl/build/index.js"]
+      "command": "npx",
+      "args": ["@247arjun/mcp-curl"]
     }
   }
 }

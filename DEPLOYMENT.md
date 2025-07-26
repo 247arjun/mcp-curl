@@ -89,10 +89,10 @@ For VS Code with MCP extension, add to your `mcp.json`:
 
 ## Global Installation
 
-### From npm (when published)
+### From npm
 
 ```bash
-npm install -g mcp-curl
+npm install -g @247arjun/mcp-curl
 ```
 
 Then use in MCP config:
@@ -100,7 +100,8 @@ Then use in MCP config:
 {
   "mcpServers": {
     "mcp-curl": {
-      "command": "mcp-curl"
+      "command": "npx",
+      "args": ["@247arjun/mcp-curl"]
     }
   }
 }
