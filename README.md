@@ -5,6 +5,10 @@
 
 A Model Context Protocol (MCP) server that provides curl functionality, allowing AI assistants to make HTTP requests directly from their environment.
 
+<a href="https://glama.ai/mcp/servers/@247arjun/mcp-curl">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@247arjun/mcp-curl/badge" alt="Curl Server MCP server" />
+</a>
+
 ## Features
 
 - **HTTP Methods**: Support for GET, POST, PUT, DELETE requests
